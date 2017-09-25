@@ -1,4 +1,4 @@
-KPlatinum Kit Version 0-0-1-0
+KPlatinum Kit Version 0-0-1-1
 -----------------------------
 
 This kit is composed of modules with the following GIT repository hashes:
