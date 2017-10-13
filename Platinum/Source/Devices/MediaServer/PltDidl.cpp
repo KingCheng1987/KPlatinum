@@ -247,6 +247,42 @@ PLT_Didl::FormatTimeStamp(NPT_UInt32 seconds)
     return result;
 }
 
+NPT_String
+PLT_Didl::FormatTimeStampEx(NPT_UInt32 seconds)
+{
+    NPT_String result;
+    int hours = seconds/3600;
+    if (hours == 0) {
+        result += "00:";
+    } else {
+        result += NPT_String::FromInteger(hours) + ":";
+    }
+
+    int minutes = (seconds/60)%60;
+    if (minutes == 0) {
+        result += "00:";
+    } else {
+        if (minutes < 10) {
+            result += '0';
+        }
+        result += NPT_String::FromInteger(minutes) + ":";
+    }
+
+    int secs = seconds%60;
+    if (secs == 0) {
+        result += "00";
+    } else {
+        if (secs < 10) {
+            result += '0';
+        }
+        result += NPT_String::FromInteger(secs);
+    }
+
+	result += ".000"; // needed for XBOX360 otherwise it won't play the track
+    return result;
+}
+
+
 /*----------------------------------------------------------------------
 |   PLT_Didl::ParseTimeStamp
 +---------------------------------------------------------------------*/

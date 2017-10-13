@@ -145,6 +145,7 @@ public:
     static void        AppendXmlUnEscape(NPT_String& out, const char* in);
     static NPT_Result  ParseTimeStamp(const NPT_String& timestamp, NPT_UInt32& seconds);
     static NPT_String  FormatTimeStamp(NPT_UInt32 seconds);
+	static NPT_String  FormatTimeStampEx(NPT_UInt32 seconds);
     static NPT_Result  ParseTimeStamp(const NPT_String& in, NPT_TimeStamp& timestamp) {
         NPT_UInt32 seconds;
         NPT_Result res = ParseTimeStamp(in, seconds);
