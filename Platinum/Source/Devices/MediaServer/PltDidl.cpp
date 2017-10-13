@@ -283,6 +283,30 @@ PLT_Didl::FormatTimeStampEx(NPT_UInt32 seconds)
 }
 
 
+NPT_String PLT_Didl::FindDurationInMetaData(NPT_String meta)
+{
+	NPT_String ret_string;
+	int pos = meta.Find(PLT_FILTER_FIELD_DURATION);
+	if( -1 != pos ){
+		pos += 2 + strlen(PLT_FILTER_FIELD_DURATION);
+		ret_string = meta.SubString(pos, 8);
+	}
+	else{
+		NPT_LOG_WARNING_1("no duration in meta. %s", ret_string.GetChars());
+		return ret_string;
+	}
+
+	pos = ret_string.Find(".");
+	if(-1 == pos)
+	{
+	   ret_string= ret_string.SubString(0,7);
+	   ret_string = "0"+ret_string;
+	}
+	return ret_string;
+}
+
+
+
 /*----------------------------------------------------------------------
 |   PLT_Didl::ParseTimeStamp
 +---------------------------------------------------------------------*/

@@ -118,6 +118,8 @@
 #define PLT_FILTER_FIELD_RES_BITSPERSAMPLE          "res@bitsPerSample"
 #define PLT_FILTER_FIELD_RES_NRAUDIOCHANNELS        "res@nrAudioChannels"
 #define PLT_FILTER_FIELD_RES_SAMPLEFREQUENCY        "res@sampleFrequency"
+#define PLT_FILTER_FIELD_DURATION               "duration"
+
 
 extern const char* didl_header;
 extern const char* didl_footer;
@@ -146,6 +148,7 @@ public:
     static NPT_Result  ParseTimeStamp(const NPT_String& timestamp, NPT_UInt32& seconds);
     static NPT_String  FormatTimeStamp(NPT_UInt32 seconds);
 	static NPT_String  FormatTimeStampEx(NPT_UInt32 seconds);
+	NPT_String         FindDurationInMetaData(NPT_String meta);
     static NPT_Result  ParseTimeStamp(const NPT_String& in, NPT_TimeStamp& timestamp) {
         NPT_UInt32 seconds;
         NPT_Result res = ParseTimeStamp(in, seconds);
